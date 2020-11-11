@@ -41,18 +41,18 @@
               </v-card>
             </td>
           </template>
-          <template>
-            <v-row justify="center">
-              <v-expansion-panels accordion>
-                <v-expansion-panel v-for="(item,i) in 5" :key="i">
-                  <v-expansion-panel-header>Item</v-expansion-panel-header>
-                  <v-expansion-panel-content>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </v-expansion-panel-content>
-                </v-expansion-panel>
-              </v-expansion-panels>
-            </v-row>
-          </template>
+<!--          <template>-->
+<!--            <v-row justify="center">-->
+<!--              <v-expansion-panels accordion>-->
+<!--                <v-expansion-panel v-for="(item,i) in 5" :key="i">-->
+<!--                  <v-expansion-panel-header>Item</v-expansion-panel-header>-->
+<!--                  <v-expansion-panel-content>-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.-->
+<!--                  </v-expansion-panel-content>-->
+<!--                </v-expansion-panel>-->
+<!--              </v-expansion-panels>-->
+<!--            </v-row>-->
+<!--          </template>-->
           <template v-slot:[`item.actions`]="{ item }">
             <v-btn small class="mr-2" @click="editItem(item)">
               edit
@@ -63,6 +63,30 @@
           </template>
       </v-data-table>
     </v-card>
+
+<!--    <v-dialog v-model="dialogdel" persistent max-width="400px">-->
+<!--      <v-card>-->
+<!--        <v-card-title>-->
+<!--                    <span class="headline">-->
+<!--                        Yakin ingin menghapus?-->
+<!--                    </span>-->
+<!--        </v-card-title>-->
+
+<!--        <v-card-actions>-->
+<!--          <v-spacer></v-spacer>-->
+
+<!--          <v-btn color="green darken-1" text @click="cancel">-->
+<!--            Tidak-->
+<!--          </v-btn>-->
+
+<!--          <v-btn color="red darken-1" text @click="confirmdelete">-->
+<!--            Ya-->
+<!--          </v-btn>-->
+
+<!--        </v-card-actions>-->
+
+<!--      </v-card>-->
+<!--    </v-dialog>-->
 
     <v-dialog
         v-model="dialog"
@@ -109,6 +133,7 @@ export default {
       dialog:false,
       tempTodo:null,
       filters:"All Priority",
+      dialogdel: false,
       selected: [],
       headers: [
         {
@@ -161,6 +186,7 @@ export default {
         note: null,
       };
     },
+
     editItem(item){
       this.formTodo = item;
       this.dialog = true;
