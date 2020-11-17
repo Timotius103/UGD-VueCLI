@@ -31,7 +31,14 @@ const router = new VueRouter({
                     name:'Unguided',
                     component: importComponent('TodoList/ListUGD'),
                 },
+                // To do list TGS
+                {
+                    path: "/tugas",
+                    name:'Tugas',
+                    component: importComponent('TodoList/ListTugas'),
+                },
             ]
+
         },
     ]
 });
